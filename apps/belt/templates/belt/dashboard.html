@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>dash</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+</head>
+<body>
+    <h1>Hello, {{request.session.name}}</h1>
+    <a href="/">Logout</a>
+    <p>Your Wish List:
+            <table style="width:80%; margin:20px; text-align:center;">
+                    <tr>
+                        <th>Item</th>
+                        <th>Added By</th>
+                        <th>Date Added</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for stuff in user_list.Users_item.all %}
+                    <tr>
+                        <td><a href="/wish_items/{{stuff.id}}">{{stuff.name}}</a></td>
+                        <td>{{user_list.username}}</td>
+                        <td>{{stuff.created_at}}</td>
+                        <td><a href="/remove">remove from list</a> <a href="/del">or delete your item from db</a></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+    </p>    
+    <p>Other Users' Wish List:
+            <table style="width:80%; margin:20px; text-align:center;">
+                    <tr>
+                        <th>Item</th>
+                        <th>Added By</th>
+                        <th>Date Added</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>item que call</td>
+                        <td>username que call</td>
+                        <td>created at que call</td>
+                        <td><a>add to list</a></td>
+                    </tr>
+            </table>
+    </p>
+    <a href="/wish_items/create">Add Item</a>
+</body>
+</html>
